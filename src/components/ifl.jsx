@@ -5,8 +5,8 @@ export function Header() {
   return (
     <header className="px-4 lg:px-6 h-16 flex items-center justify-between bg-gray-900 text-white shadow-md">
       <Link href="/" className="flex items-center gap-2">
-        <InstagramIcon className="h-6 w-6 text-primary transition-transform transform hover:scale-110" />
-        <b className="text-lg font-semibold">Instafel</b>
+        <InstagramIcon className="h-8 w-8 text-primary transition-transform transform hover:scale-110" />
+        <b className="text-xl font-bold">Instafel</b>
       </Link>
       <nav className="flex gap-6">
         <Link href="/guide" className="text-sm font-medium hover:text-primary transition-colors">
@@ -35,7 +35,7 @@ export function LoadingBar() {
 // Footer bileşeni
 export function Footer() {
   return (
-    <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full items-center px-4 md:px-6 bg-gray-800 text-white border-t">
+    <footer className="flex flex-col gap-4 sm:flex-row py-6 w-full items-center px-4 md:px-6 bg-gray-800 text-white border-t border-gray-700">
       <p className="text-xs text-muted-foreground">Developed by mamiiblt with ❤️</p>
       <nav className="sm:ml-auto flex gap-4 sm:gap-6">
         <Link href="https://t.me/instafel" className="text-xs hover:text-primary transition-colors">
@@ -49,7 +49,7 @@ export function Footer() {
   );
 }
 
-// Modern Instagram Ikonu
+// Instagram Ikonu
 function InstagramIcon(props) {
   return (
     <svg
