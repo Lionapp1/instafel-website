@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FaBook, FaDownload, FaUser } from 'react-icons/fa'; // React Icons kullanacağız
 
 // Header bileşeni
 export function Header() {
@@ -9,17 +10,23 @@ export function Header() {
         <b className="text-xl font-bold">Instafel</b>
       </Link>
       <nav className="flex gap-6">
-        <Link href="/guide" className="text-sm font-medium hover:text-primary transition-colors">
-          Guide
-        </Link>
-        <Link href="/library_backup" className="text-sm font-medium hover:text-primary transition-colors">
-          BLibrary
-        </Link>
-        <Link href="/download?version=latest" className="text-sm font-medium hover:text-primary transition-colors">
-          Download
-        </Link>
+        <IconLink href="/guide" icon={<FaUser />} label="Guide" />
+        <IconLink href="/library_backup" icon={<FaBook />} label="BLibrary" />
+        <IconLink href="/download?version=latest" icon={<FaDownload />} label="Download" />
       </nav>
     </header>
+  );
+}
+
+// IconLink bileşeni - İkonlu bağlantılar
+function IconLink({ href, icon, label }) {
+  return (
+    <Link href={href} className="relative text-sm flex items-center justify-center text-white hover:text-primary">
+      <span className="text-2xl">{icon}</span>
+      <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-xs opacity-0 group-hover:opacity-100 transition-opacity">
+        {label}
+      </span>
+    </Link>
   );
 }
 
