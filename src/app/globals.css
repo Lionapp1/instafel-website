@@ -3,40 +3,109 @@
 @tailwind utilities;
 
 @layer base {
+  /* Renk Paleti */
   :root {
-    --background: 36 39% 88%;
-    --foreground: 36 45% 15%;
-    --primary: 36 45% 70%;
-    --primary-foreground: 36 45% 11%;
-    --secondary: 40 35% 77%;
-    --secondary-foreground: 36 45% 25%;
-    --accent: 36 64% 57%;
-    --accent-foreground: 36 72% 17%;
-    --destructive: 0 84% 37%;
-    --destructive-foreground: 0 0% 98%;
-    --muted: 36 33% 75%;
-    --muted-foreground: 36 45% 25%;
-    --card: 36 46% 82%;
-    --card-foreground: 36 45% 20%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --border: 36 45% 60%;
-    --input: 36 45% 60%;
-    --ring: 36 45% 30%;
-    --radius: 0rem;
-  }
-}
+    --background-light: 220 13% 98%; /* Açık tema arka planı */
+    --foreground-light: 220 18% 16%; /* Açık tema yazı rengi */
+    --primary-light: 210 100% 50%; /* Ana renk (açık) */
+    --primary-foreground-light: 220 100% 90%; /* Ana yazı rengi (açık) */
+    --secondary-light: 210 60% 50%; /* İkincil renk */
+    --secondary-foreground-light: 210 80% 20%; /* İkincil yazı rengi */
+    --accent-light: 320 100% 60%; /* Vurgulama rengi (açık) */
+    --muted-light: 220 20% 90%; /* Hafif arka plan rengi */
+    --border-light: 220 15% 70%; /* Border rengi (açık) */
 
-@layer base {
+    --background-dark: 220 13% 10%; /* Koyu tema arka planı */
+    --foreground-dark: 220 18% 90%; /* Koyu tema yazı rengi */
+    --primary-dark: 210 100% 50%; /* Ana renk (koyu) */
+    --primary-foreground-dark: 220 100% 90%; /* Ana yazı rengi (koyu) */
+    --secondary-dark: 210 60% 50%; /* İkincil renk (koyu) */
+    --secondary-foreground-dark: 210 80% 20%; /* İkincil yazı rengi (koyu) */
+    --accent-dark: 320 100% 60%; /* Vurgulama rengi (koyu) */
+    --muted-dark: 220 20% 25%; /* Hafif arka plan rengi (koyu) */
+    --border-dark: 220 15% 50%; /* Border rengi (koyu) */
+  }
+
+  /* Temel ayarlar */
   * {
+    box-sizing: border-box;
     @apply border-border;
   }
 
   body {
-    @apply bg-background text-foreground font-body;
+    @apply bg-background-light text-foreground-light font-sans transition-colors duration-300;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading;
+    @apply font-semibold text-primary-light;
+  }
+
+  a {
+    @apply text-primary-light hover:text-primary-dark transition-colors;
+  }
+
+  /* Dark Mode */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background: var(--background-dark);
+      --foreground: var(--foreground-dark);
+      --primary: var(--primary-dark);
+      --primary-foreground: var(--primary-foreground-dark);
+      --secondary: var(--secondary-dark);
+      --secondary-foreground: var(--secondary-foreground-dark);
+      --accent: var(--accent-dark);
+      --muted: var(--muted-dark);
+      --border: var(--border-dark);
+    }
+
+    body {
+      @apply bg-background-dark text-foreground-dark;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      @apply text-primary-dark;
+    }
+
+    a {
+      @apply text-primary-dark hover:text-primary-light;
+    }
+  }
+}
+
+@layer components {
+  /* Kartlar */
+  .card {
+    @apply bg-card text-card-foreground border border-border rounded-md p-4 shadow-md transition-all hover:shadow-lg;
+  }
+
+  /* Butonlar */
+  .btn {
+    @apply py-2 px-4 rounded-lg font-medium transition-colors;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary-dark;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary-dark;
+  }
+
+  .btn-muted {
+    @apply bg-muted text-muted-foreground hover:bg-muted-dark;
+  }
+}
+
+@layer utilities {
+  /* Dark mode class */
+  .dark {
+    background-color: var(--background-dark);
+    color: var(--foreground-dark);
+  }
+
+  /* Light mode class */
+  .light {
+    background-color: var(--background-light);
+    color: var(--foreground-light);
   }
 }
